@@ -277,9 +277,11 @@ func main() {
 			}
 		}
 	}
-
+	// 添加默认域名本身映射到 Docker Hub
+	RegistryRoutes[domainSuffix] = dockerHub
 	// 如果没有自定义路由，使用默认路由
 	RegistryRoutes = map[string]string{
+		domainSuffix:                 dockerHub,
 		"docker." + domainSuffix:     dockerHub,
 		"quay." + domainSuffix:       "https://quay.io",
 		"gcr." + domainSuffix:        "https://gcr.io",
